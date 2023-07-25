@@ -16,6 +16,7 @@ driver = webdriver.Chrome()
 
 # Go to the page that we want to scrape
 driver.get("https://set.loud.red/play")
+# driver.get("https://set.loud.red/play/infinite")
 
 # Wait for the page to load
 time.sleep(1)
@@ -33,8 +34,8 @@ tiles = soup.find_all('div', {'class': 'svelte-ttp4q4'})
 # Close the browser
 # driver.quit()
 
-print("Done")
-print(tiles[0])
+# print("Done")
+# print(tiles[0])
 
 
 class Tile:
@@ -91,9 +92,9 @@ for tile in tile_info:
     if None in tile.values():
         tile_info.remove(tile)
 
-print(tile_info)
+# print(tile_info)
 
-print(tile_info[0]['number'])
+# print(tile_info[0]['number'])
 
 tile_list = []
 
@@ -141,7 +142,7 @@ class Game:
                         buttons[j].click()
                         # time.sleep(.1)
                         buttons[k].click()
-                        print(i,j,k)
+                        # print(i,j,k)
                         return None
         return None
 
@@ -233,7 +234,7 @@ time.sleep(1)
 # time.sleep(10)
 while(True):
     soup = BeautifulSoup(driver.page_source, 'html.parser')
-    print("WTFFFFF")
+    # print("WTFFFFF")
     tiles = soup.find_all('div', {'class': 'svelte-ttp4q4'})
     tile_info = [extract_tile_info(tile) for tile in tiles]
 
@@ -248,7 +249,7 @@ while(True):
         tile_list.append(Tile(tile['number'], tile['shape'], tile['color'], tile['shading']))
     if len(tile_list)==0:
         break
-    print(tile_list)
+    # print(tile_list)
     
     # WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, 'div.grid.svelte-2fu5i7')))
 
